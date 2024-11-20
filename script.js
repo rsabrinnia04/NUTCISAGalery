@@ -14,5 +14,17 @@ document.querySelectorAll('.gallery img').forEach(img => {
         document.body.appendChild(overlay);
 
         overlay.addEventListener('click', () => overlay.remove());
+        let currentSlide = 0;
+
+function changeSlide(direction) {
+    const carouselImages = document.querySelector('.carousel-images');
+    const totalSlides = carouselImages.children.length;
+
+    currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+    const slideWidth = carouselImages.children[0].offsetWidth;
+
+    carouselImages.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+}
+
     });
 });
