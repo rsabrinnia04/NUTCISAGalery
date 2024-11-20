@@ -5,12 +5,12 @@ function changeSlide(carouselId, direction) {
 
     let currentIndex = parseInt(carousel.getAttribute('data-current-index')) || 0;
 
-    // Hitung index baru
+    // Hitung index baru berdasarkan arah (next atau prev)
     currentIndex = (currentIndex + direction + totalImages) % totalImages;
 
-    // Pindahkan carousel
-    const imageWidth = images[0].offsetWidth;
-    carousel.style.transform = `translateX(-${currentIndex * imageWidth}px)`;
+    // Pindahkan carousel berdasarkan indeks gambar saat ini
+    const imageWidth = images[0].offsetWidth;  // Mendapatkan lebar gambar untuk menggeser
+    carousel.style.transform = `translateX(-${currentIndex * imageWidth}px)`; // Geser gambar
 
     // Update index saat ini
     carousel.setAttribute('data-current-index', currentIndex);
